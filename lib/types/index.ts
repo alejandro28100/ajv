@@ -102,16 +102,26 @@ export type ErrorNoParams<K extends string, S = unknown> = ErrorObject<K, Record
 
 interface _KeywordDef {
   keyword: string | string[]
-  type?: JSONType | JSONType[] // data types that keyword applies to
-  schemaType?: JSONType | JSONType[] // allowed type(s) of keyword value in the schema
-  allowUndefined?: boolean // used for keywords that can be invoked by other keywords, not being present in the schema
-  $data?: boolean // keyword supports [$data reference](../../docs/guide/combining-schemas.md#data-reference)
-  implements?: string[] // other schema keywords that this keyword implements
-  before?: string // keyword should be executed before this keyword (should be applicable to the same type)
-  post?: boolean // keyword should be executed after other keywords without post flag
-  metaSchema?: AnySchemaObject // meta-schema for keyword schema value - it is better to use schemaType where applicable
-  validateSchema?: AnyValidateFunction // compiled keyword metaSchema - should not be passed
-  dependencies?: string[] // keywords that must be present in the same schema
+  /** Data types that keyword applies to */
+  type?: JSONType | JSONType[] // 
+  /** Allowed type(s) of keyword value in the schema */
+  schemaType?: JSONType | JSONType[] 
+  /** Used for keywords that can be invoked by other keywords, not being present in the schema */
+  allowUndefined?: boolean
+  /** Keyword supports [$data reference](../../docs/guide/combining-schemas.md#data-reference) */
+  $data?: boolean
+  /** Other schema keywords that this keyword implements */
+  implements?: string[]
+  /** Keyword should be executed before this keyword (should be applicable to the same type) */
+  before?: string
+  /** Keyword should be executed after other keywords without post flag */
+  post?: boolean 
+  /** Meta-schema for keyword schema value - it is better to use schemaType where applicable */
+  metaSchema?: AnySchemaObject 
+  /**  compiled keyword metaSchema - should not be passed */
+  validateSchema?: AnyValidateFunction 
+  /** keywords that must be present in the same schema */
+  dependencies?: string[] 
   error?: KeywordErrorDefinition
   $dataError?: KeywordErrorDefinition
 }
